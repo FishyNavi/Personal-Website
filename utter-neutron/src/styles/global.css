@@ -1,0 +1,135 @@
+* {
+    color: #8d8296;
+}
+
+body {
+    margin:0 auto;
+    width: 100%;
+    max-width: 80ch;
+    padding: 1rem;
+    line-height: 1.5;
+    background-color: #24192d;
+    font-family: sans-serif;
+    color: #8d8296;
+}
+
+.navi {
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.35rem 0 0.35rem 0.35rem ;
+    background-color: #291e32;
+    margin-bottom: 2rem;
+    margin-top: 10rem;
+}
+
+.nav{
+    position: relative;
+    padding: 0.5rem 1rem;
+    background-color: #24192d;
+}
+
+.nav:hover {
+    background-color: #291e32;
+}
+a {
+    transition: all 0.2s ease;
+    text-decoration: none;
+}
+a:hover {
+    color: #7e5c99;
+}
+
+.oneko-nav {
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(0);
+    width: 35px;
+    height: 35px;
+    background-image: url('/oneko4.png');
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: all 0.1s ease 0.2s;
+}
+.nav:hover .oneko-nav {
+    
+    opacity: 1;
+    transform: translateX(-50%) translateY(-20px);
+    animation: eepy 5s linear 1s forwards;
+
+}
+.content {
+    position: relative;
+    display: flex;
+    margin-top: 5rem;
+    padding: 5rem;
+    background-color:#291e32;
+}
+.oneko-run {
+    position: absolute;
+    bottom: 50%;
+    left: 0%;
+    width: 64px;
+    height: 64px;
+    scale: -1 1;
+    background-image: url('/oneko-run.png');
+    background-size: 64px 1344px;
+    background-position: 0 0;
+    transition: translate 2s linear;
+    translate: 0 -5rem;
+    animation: oneko-run-but-backwards 2s steps(20) reverse forwards;
+    animation-play-state: paused;
+
+}
+.content:hover .oneko-run {
+    opacity: 1;
+    animation: oneko-run 2s steps(20) forwards;
+    scale: 1 1;
+    translate: 500px -5rem;
+}
+.content:active .oneko-run {
+    background-image: url('/oneko2.png');
+}
+@keyframes eepy {
+    
+    0% {
+        background-image:url('/oneko1.png');
+    }
+    20% {
+        background-image:url('/oneko2.png');
+    }
+    80% {
+        background-image:url('/oneko3.png');
+    }
+    100% {
+        background-image:url('/oneko4.png');
+    }
+}
+
+
+@keyframes oneko-run {
+    0% {
+        background-position: 0px 1344px;
+    }    
+    100% {
+        background-position: 0px 64px;
+    }
+}
+@keyframes oneko-run-but-backwards {
+    0% {
+        background-position: 0px 128px;
+        visibility: hidden;
+    }    
+    100% {
+        background-position: 0px 1408px;
+        visibility: visible;
+        
+        
+        
+    }
+}
+.content:not(:hover) .oneko-run {
+    animation-play-state: running;
+}
