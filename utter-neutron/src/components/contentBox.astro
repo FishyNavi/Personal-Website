@@ -1,4 +1,4 @@
-<div class="contentBox">
+<div class="contentWrapper">
     <div class="oneko-run"></div>
     <div class="content">
         <slot></slot>
@@ -22,12 +22,17 @@
             background-position: 0px 1056px;  
         }
     }
-    .contentBox {
+    .contentWrapper {
         position: relative;
         display: flex;
         margin-top: 5rem;
-        padding: 5rem;
-        background-color:#291e32;
+        max-width: 80ch;
+    }
+    .content {
+        display:flex;
+        padding: 10px;
+        border: 3px solid #8d8296;
+        border-radius: 15px;
     }
     .oneko-run {
         position: absolute;
@@ -45,12 +50,12 @@
         transition: translate 2s linear, opacity ease 0.2s;;
         opacity: 1;
         animation: oneko-run 2s steps(20) forwards;
-        translate: 22cqw -48px;
+        translate: 25cqw -48px;
     }
     .oneko-run.unhovered {
         opacity: 1;
         transition: translate 2s linear;
         animation: oneko-run-but-backwards 2s steps(20) forwards;
-        translate: 44cqw -48px;
+        translate: 50cqw -48px;
     }
 </style>

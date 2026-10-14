@@ -1,5 +1,6 @@
 * {
-    color: #8d8296;
+    color: #bd96de;
+    
 }
 
 body {
@@ -8,9 +9,9 @@ body {
     max-width: 80ch;
     padding: 1rem;
     line-height: 1.5;
-    background-color: #24192d;
+    background-color: #060407;
     font-family: sans-serif;
-    color: #8d8296;
+    
 }
 
 .navi {
@@ -37,7 +38,7 @@ a {
     text-decoration: none;
 }
 a:hover {
-    color: #7e5c99;
+    color: #785198;
 }
 
 .oneko-nav {
@@ -60,7 +61,13 @@ a:hover {
     animation: eepy 5s linear 1s forwards;
 
 }
-
+.yap {
+    text-align:center; 
+    flex: 1;
+}
+.page {
+    background-color: #291e3241;
+}
 @keyframes eepy {
     
     0% {
