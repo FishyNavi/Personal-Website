@@ -60,38 +60,7 @@ a:hover {
     animation: eepy 5s linear 1s forwards;
 
 }
-.content {
-    position: relative;
-    display: flex;
-    margin-top: 5rem;
-    padding: 5rem;
-    background-color:#291e32;
-}
-.oneko-run {
-    position: absolute;
-    bottom: 50%;
-    left: 0%;
-    width: 64px;
-    height: 64px;
-    scale: -1 1;
-    background-image: url('/oneko-run.png');
-    background-size: 64px 1344px;
-    background-position: 0 0;
-    transition: translate 2s linear;
-    translate: 0 -5rem;
-    animation: oneko-run-but-backwards 2s steps(20) reverse forwards;
-    animation-play-state: paused;
 
-}
-.content:hover .oneko-run {
-    opacity: 1;
-    animation: oneko-run 2s steps(20) forwards;
-    scale: 1 1;
-    translate: 500px -5rem;
-}
-.content:active .oneko-run {
-    background-image: url('/oneko2.png');
-}
 @keyframes eepy {
     
     0% {
@@ -109,27 +78,3 @@ a:hover {
 }
 
 
-@keyframes oneko-run {
-    0% {
-        background-position: 0px 1344px;
-    }    
-    100% {
-        background-position: 0px 64px;
-    }
-}
-@keyframes oneko-run-but-backwards {
-    0% {
-        background-position: 0px 128px;
-        visibility: hidden;
-    }    
-    100% {
-        background-position: 0px 1408px;
-        visibility: visible;
-        
-        
-        
-    }
-}
-.content:not(:hover) .oneko-run {
-    animation-play-state: running;
-}

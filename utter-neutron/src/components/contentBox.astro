@@ -1,0 +1,56 @@
+<div class="contentBox">
+    <div class="oneko-run"></div>
+    <div class="content">
+        <slot></slot>
+    </div>
+        
+</div>
+<style>
+    @keyframes oneko-run {
+        0% {
+            background-position: 0px 96px;
+        }    
+        100% {
+            background-position: 0px 1056px;
+        }
+    }
+    @keyframes oneko-run-but-backwards {
+        0% {
+            background-position: 0px 96px;
+        }    
+        100% {
+            background-position: 0px 1056px;  
+        }
+    }
+    .contentBox {
+        position: relative;
+        display: flex;
+        margin-top: 5rem;
+        padding: 5rem;
+        background-color:#291e32;
+    }
+    .oneko-run {
+        position: absolute;
+        top: 0%;
+        left: -5%;
+        width: 48px;
+        height: 48px;
+        background-image: url('/oneko-run.png');
+        background-size: 48px 1008px;
+        background-position: 0 0;
+        opacity: 0;
+        translate: 0px -48px;
+    }
+    .oneko-run.hovered {
+        transition: translate 2s linear, opacity ease 0.2s;;
+        opacity: 1;
+        animation: oneko-run 2s steps(20) forwards;
+        translate: 22cqw -48px;
+    }
+    .oneko-run.unhovered {
+        opacity: 1;
+        transition: translate 2s linear;
+        animation: oneko-run-but-backwards 2s steps(20) forwards;
+        translate: 44cqw -48px;
+    }
+</style>
