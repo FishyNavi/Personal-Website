@@ -1,11 +1,49 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import BasedLayout from '../layouts/basedLayout.astro'
+import ContentBox from "../components/contentBox.astro";
+import Background from '../components/background.astro';
+const pageTitle = "Aboutme";
 ---
+<Background></Background>
+<BasedLayout pageTitle={pageTitle}>
+    <ContentBox>
+        <div class="yap">
+            <h2>Welcome!</h2>
+            <p>Hello. I'm cynamon and this is my website :3c I have a chaotic nature and lots of passions, and sometimes I make things. New stuff here will appear or not from time to time</p>
+        </div>
+        <div class="side-box">
+            <img src="/oneko1.png"/>
+            <a href="https://www.imood.com/users/cynamon_"><img src="https://moods.imood.com/display/uname-cynamon_/fg-bd96de/trans-1/imood.gif" alt="The current mood of cynamon_ at www.imood.com"></a>
+            <div class="side-box-label">meow</div>
+        </div>
+    </ContentBox>
 
-<Layout>
-	<Welcome />
-</Layout>
+    <ContentBox>
+        <div class="yap">
+            <h3>Why cynamondev?</h3>
+            <p>Because yes. I like the flavor of cinnamon.</p>
+        </div>
+        <div class="side-history">
+            <ul>
+                <h3>Update history</h3>
+                <li>16.10.2026 - Colorful balls</li>
+                <li>15.10.2026 - Things being changed</li>
+                <li>14.10.2026 - The idea was born</li>
+                pls dont forget to add 
+            </ul>
+        </div>
+    </ContentBox>
+
+    <ContentBox>
+        <div class="yap">
+            <h3>Some more to read...</h3>
+            <p style="text-indent: 1em;">
+                It is just the landing page! Go check out other parts of the website if you'd like. I might add blogs and uhhh... uh... stuff :3 Time will tell. 
+            </p>
+        </div>
+    </ContentBox>
+</BasedLayout>
+
+<script>
+    import '../scripts/oneko.ts'
+</script>

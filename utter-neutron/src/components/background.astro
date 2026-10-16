@@ -1,0 +1,124 @@
+<canvas id="background-canvas"></canvas>
+<style>
+    canvas {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: -1;
+        background-color: #110010;
+    }
+</style>
+
+<script>
+
+    const canvas = document.getElementById('background-canvas') as HTMLCanvasElement;
+    const context = canvas.getContext('2d') as CanvasRenderingContext2D;
+    const G = 6.6743;
+
+    let offsetX:number;
+    let offsetY:number;
+
+    interface Body {
+        x: number;
+        y: number;
+        vx: number;
+        vy: number;
+        mass: number;
+        color: string;
+        trail: { x: number; y: number }[];
+    }
+    function onResize() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        offsetX = window.innerWidth/2;
+        offsetY = window.innerHeight/2;
+    }
+    window.addEventListener('resize',onResize);
+    let bodies: Body[] = [];
+    function resetEnviroment() {
+        bodies = [
+            {x: -90, y:0, vx:0, vy:0,mass:5,color:"#FF0000",trail:[] },
+            {x: 90, y:0, vx:0, vy:0,mass:5,color:"#00FF00",trail:[] },
+            {x: 0, y:-90, vx:0, vy:0,mass:5,color:"#0000FF",trail:[] }
+        ]
+        bodies.forEach((b) => {
+            b.x+=offsetX;
+            b.y+=offsetY;
+            b.vx = Math.random() * 2 - 0.5;
+            b.vy = Math.random() * 2 - 0.5;
+        });
+    }
+    function step() {
+        for (let i = 0; i<bodies.length; i++) {
+            for (let j = i + 1; j<bodies.length; j++) {
+                if (i === j) continue;
+                const dx = bodies[j].x - bodies[i].x;
+                const dy = bodies[j].y - bodies[i].y;
+                const sSqr = dx*dx+dy*dy+420;
+                const s = Math.sqrt(sSqr);
+
+                const f = G*bodies[i].mass*bodies[j].mass/sSqr;
+                const fx = f * (dx/s);
+                const fy = f * (dy/s);
+
+                bodies[i].vx += fx;
+                bodies[i].vy += fy;
+                bodies[j].vx -= fx;
+                bodies[j].vy -= fy;
+
+            }
+        }
+        for (let b of bodies) {
+        b.x += b.vx;
+        b.y += b.vy;
+        b.trail.push({ x: b.x, y: b.y });
+        if (b.trail.length > 150) {
+            b.trail.shift();
+        }
+    }
+    }
+    
+    function draw() {
+        context.fillStyle = 'rgba(0, 0, 0, 0.2)';
+        context.fillRect(0, 0, canvas.width, canvas.height);
+        for (let b of bodies) {
+            if (b.trail.length < 2) continue;
+            context.beginPath();
+            context.moveTo(b.trail[0].x, b.trail[0].y);
+            for (let i = 1; i < b.trail.length; i++) {
+                context.lineTo(b.trail[i].x, b.trail[i].y);
+            }
+            context.strokeStyle = b.color;
+            context.lineWidth = 3;
+            context.stroke();
+
+            context.fillStyle = b.color;
+            context.beginPath();
+            context.arc(b.x, b.y, 15, 0, Math.PI * 2);
+            context.fill();
+        }
+    }
+    function loop() {
+        step();
+        draw();
+        let out = 0;
+        for (let n = 0; n < bodies.length; n++){
+            const x = bodies[n].x;
+            const y = bodies[n].y;
+            if ( x > window.innerWidth || x < 0 || y > window.innerHeight || y < 0 ) out++;
+        }
+        if (out===bodies.length) resetEnviroment();
+        requestAnimationFrame(loop);
+        
+    }
+
+    onResize();
+    resetEnviroment();
+    loop();
+    
+    
+
+    
+</script>

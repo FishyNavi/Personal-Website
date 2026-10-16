@@ -1,0 +1,52 @@
+---
+import BasedLayout from '../layouts/basedLayout.astro'
+import ContentBox from "../components/contentBox.astro";
+import {execSync} from 'node:child_process';
+const uptime = parseFloat(execSync('cat /proc/uptime | awk \'{print $1}\'').toString().trim()); 
+const hostname = execSync('hostname').toString();
+const days = Math.floor(uptime / 86400);
+const hours = Math.floor((uptime % 86400) / 3600);
+const minutes = Math.floor((uptime % 3600) / 60);
+const seconds = Math.floor(uptime % 60);
+const pageTitle = "About website";
+---
+
+<BasedLayout pageTitle = {pageTitle}>
+    <ContentBox>
+        <div>
+            <h3 class="yap">Some facts!</h3>
+            <p>The website is built by me, with my paws, using <a href="https://astro.build/">Astro</a> framework and of course is <a href="https://github.com/FishyNavi/Personal-Website">open-source</a></p>
+            <p>It is hosted on <var>{hostname}</var> and is up for <var>{days} days, {hours} hours, {minutes} minutes and {seconds} seconds.</var></p>
+        </div>
+    </ContentBox>
+    <ContentBox>
+        <div>
+            <h3 class="yap">The goals</h3>
+            <ul>
+                <li>make a website</li>
+                <li>make the website good</li>
+                <li>unusual screen size support</li>
+                <li>self-host it</li>
+                <li>start blog</li>
+                <li>add cool stuff</li>
+                <li>button!</li>
+                <li>make it popular</li>    
+                <p>
+                    Slowly, but surely it all will be done
+                </p>
+                
+            </ul>
+            
+        </div>
+        <div>
+            <h3 class="yap">The style</h3>
+            <p>I'm trying to make it look minimalistic, a bit chaotic, light and short. That's because i don't know CSS nor I have slightest will to learn it.</p>
+            <p>The color pallete is bright purple foreground(the same as in my shell) and more bluish shade for accent. Keeping it small is another aspect of minimalism.</p>
+        </div>
+    </ContentBox>
+</BasedLayout>
+
+
+<script>
+    import '../scripts/oneko.ts'
+</script>

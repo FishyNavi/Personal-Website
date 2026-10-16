@@ -1,30 +1,37 @@
 * {
     color: #bd96de;
-    
+    box-sizing: border-box;
 }
 
 body {
-    margin:0 auto;
+    margin: 0 auto;
     width: 100%;
     max-width: 80ch;
-    padding: 1rem;
     line-height: 1.5;
     background-color: #060407;
     font-family: sans-serif;
-    
+}
+
+a {
+    color: #8585ff;
+    transition: color 0.2s ease;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #bd96de;
 }
 
 .navi {
-    display:flex;
+    display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0.35rem 0 0.35rem 0.35rem ;
+    padding: 0.35rem 0 0.35rem 0.35rem;
     background-color: #291e32;
-    margin-bottom: 2rem;
     margin-top: 10rem;
 }
 
-.nav{
+.nav {
     position: relative;
     padding: 0.5rem 1rem;
     background-color: #24192d;
@@ -33,55 +40,80 @@ body {
 .nav:hover {
     background-color: #291e32;
 }
-a {
-    transition: all 0.2s ease;
-    text-decoration: none;
-}
-a:hover {
-    color: #785198;
-}
 
 .oneko-nav {
     position: absolute;
     bottom: 50%;
     left: 50%;
-    transform: translateX(-50%) translateY(0);
+    transform: translate(-50%, 0);
     width: 35px;
     height: 35px;
     background-image: url('/oneko4.png');
     background-size: cover;
     background-position: center;
     opacity: 0;
-    transition: all 0.1s ease 0.2s;
+    transition: transform 0.1s ease 0.2s, opacity 0.1s ease 0.2s;
 }
-.nav:hover .oneko-nav {
-    
-    opacity: 1;
-    transform: translateX(-50%) translateY(-20px);
-    animation: eepy 5s linear 1s forwards;
 
+.nav:hover .oneko-nav {
+    opacity: 1;
+    transform: translate(-50%, -20px);
+    animation: eepy 5s linear 1s forwards;
 }
+
+.content > * {
+    border: 3px solid #8d8296;
+    border-radius: 15px;
+    margin: 10px;
+    padding: 5px;
+    width: 100%;
+}
+
+.page {
+    background-color: rgba(14, 9, 18, 0.85);
+    height: 100%;
+}
+
 .yap {
-    text-align:center; 
+    text-align: center;
     flex: 1;
 }
-.page {
-    background-color: #291e3241;
+
+.side-box {
+    width: 100px;
+    border-left: 3px solid #8d8296;
+    display: flex;
+    flex-direction: column;
+}
+
+.side-box-label {
+    border-top: 3px solid #8d8296;
+}
+
+.side-history {
+    border-left: 3px solid #8d8296;
+    height: 150px; 
+    width: 400px;
+    overflow-y: auto;
+
+}
+var {
+    background-color: #291e32;
+    border-radius: 5px;
+    color: #b0b0ff;
+    padding: 1px;
 }
 @keyframes eepy {
-    
     0% {
-        background-image:url('/oneko1.png');
+        background-image: url('/oneko1.png');
     }
     20% {
-        background-image:url('/oneko2.png');
+        background-image: url('/oneko2.png');
     }
     80% {
-        background-image:url('/oneko3.png');
+        background-image: url('/oneko3.png');
     }
     100% {
-        background-image:url('/oneko4.png');
+        background-image: url('/oneko4.png');
     }
 }
-
-

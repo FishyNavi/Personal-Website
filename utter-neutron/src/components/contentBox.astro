@@ -24,15 +24,13 @@
     }
     .contentWrapper {
         position: relative;
-        display: flex;
-        margin-top: 5rem;
+        display: block;
         max-width: 80ch;
     }
     .content {
         display:flex;
         padding: 10px;
-        border: 3px solid #8d8296;
-        border-radius: 15px;
+        
     }
     .oneko-run {
         position: absolute;
@@ -44,18 +42,18 @@
         background-size: 48px 1008px;
         background-position: 0 0;
         opacity: 0;
-        translate: 0px -48px;
+        translate: 0px -24px;
     }
     .oneko-run.hovered {
         transition: translate 2s linear, opacity ease 0.2s;;
         opacity: 1;
         animation: oneko-run 2s steps(20) forwards;
-        translate: 25cqw -48px;
+        translate: 22cqw -24px;
     }
     .oneko-run.unhovered {
         opacity: 1;
         transition: translate 2s linear;
         animation: oneko-run-but-backwards 2s steps(20) forwards;
-        translate: 50cqw -48px;
+        translate: 44cqw -24px;
     }
 </style>
