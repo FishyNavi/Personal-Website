@@ -1,0 +1,24 @@
+---
+import BasedLayout from '../../layouts/basedLayout.astro'
+import Image from '../../components/Image.astro'
+import Background from '../../components/StaticBackground.astro';
+const pageTitle = "Projects - Hackyboard";
+---
+<Background></Background>
+<BasedLayout pageTitle={pageTitle}>
+    <h2>Hackyboard</h2>
+    <p>
+        Hackyboard is a 60% keyboard PCB design i made for myself to <s>play osu</s> use for daily tasks. It's only a PCB design for now, but i will add stuff with which you'll be able to make a fully working and good-looking keyboard.
+    </p>
+    <p>
+        The sensors' measurment range is pretty wide, so pretty much every mx magnetic switch will fit. Ill update this page once i actually build it!
+        
+    </p>
+    <p>The github: <a href="https://github.com/FishyNavi/keyboard">FishyNavi/keyboard</a></p>
+    <h2>Gallery:</h2>
+    <Image src="/projects/hackyboard_front.png" alt="The front side of the pcb render"></Image>
+    <Image src="/projects/hackyboard_back.png" alt="The back side of the pcb render"></Image>
+
+</BasedLayout>
+
+  

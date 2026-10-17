@@ -1,0 +1,26 @@
+---
+import BasedLayout from '../layouts/basedLayout.astro'
+import ContentBox from "../components/contentBox.astro";
+import Background from '../components/StaticBackground.astro';
+const pageTitle = "The blog";
+---
+<Background></Background>
+<BasedLayout pageTitle={pageTitle}>
+    <ContentBox>
+        <div class="blog-category">
+        <h2 class="yap">General stuff</h2>
+        <ul>
+            <li><a href="intro">About the blog</a></li>
+        </ul>
+        
+    </div>
+    </ContentBox>
+    Stuff will appear soon™
+    
+
+</BasedLayout>
+
+<script>
+    import '../scripts/oneko.ts'
+</script>
+  

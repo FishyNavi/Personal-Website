@@ -1,0 +1,31 @@
+---
+import BasedLayout from '../../layouts/basedLayout.astro'
+import Image from '../../components/Image.astro'
+import Background from '../../components/StaticBackground.astro';
+const pageTitle = "Projects - NixOS flake";
+---
+<Background></Background>
+<BasedLayout pageTitle={pageTitle}>
+    <h2>NixOS flake</h2>
+    <p>
+        It's the flake im still using.
+    </p>
+    <p>
+        I configured some basic stuff like:
+        <div>WM: <a href="https://hypr.land/">Hyprland</a></div>
+        <div>Bar: <a href="https://github.com/alexays/waybar">Waybar</a></div>
+        <div>Menus: <a href="https://github.com/davatorium/rofi">rofi</a></div>
+        <div>Shell: zsh</div>
+        <div>Terminal: kitty</div>
+        <div>Browser: firefox</div>
+        <p>Needless to say, after some amount of time many things that rely on reasources from outside(packages) break because of updates. My flake was not an exception and currently catpuccin doesn't work because of an update that made it crash during rebuild and package count broke in fastfetch(No idea how and why)</p>
+        <p>I'm still in the process of finding time to fix that and also make it better.</p>        
+    </p>
+    <p>The github: <a href="https://github.com/FishyNavi/nixos-config">FishyNavi/nixos-config</a></p>
+    <h2>Gallery:</h2>
+    <Image src="/projects/fastfetch.png" alt="fastfetch"></Image>
+    <Image src="/projects/screenshot.png" alt="A screenshot of a system built using the flake"></Image>
+
+</BasedLayout>
+
+  

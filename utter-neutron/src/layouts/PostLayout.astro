@@ -1,0 +1,19 @@
+---
+import BasedLayout from "./basedLayout.astro";
+import Background from "../components/StaticBackground.astro";
+const {frontmatter} = Astro.props;
+---
+<Background></Background>
+<BasedLayout pageTitle = {frontmatter.title}>
+<div class="postHeader">
+    <h1>{frontmatter.title}</h1>
+    <p>Tags: {frontmatter.tags}</p>
+    <p>Published on: {frontmatter.pubDate}</p>
+</div>
+<slot />
+</BasedLayout>
+<style is:global>
+    img {
+        border: 3px solid #8d8296;
+    }
+</style>

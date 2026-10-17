@@ -1,0 +1,45 @@
+---
+import BasedLayout from '../layouts/basedLayout.astro'
+import ContentBox from "../components/contentBox.astro";
+import Background from '../components/StaticBackground.astro';
+const pageTitle = "My projects";
+---
+<Background></Background>
+<BasedLayout pageTitle={pageTitle}>
+    <p>
+        Here are some of the things i made. Nothing really notable. (things are clickable)
+    </p>
+    <a href="nixos" class="yap">
+        <ContentBox>
+            <div class="project">
+                <h2>My nixOS flake</h2>
+                <div>A nixOS system flake i made for myself</div>
+            </div>
+        </ContentBox>
+    </a>
+    <a href="hackyboard" class="yap">
+        <ContentBox>
+            <div class="project">
+                <h2>Hackyboard</h2>
+                <div>60% HE keyboard i made for gayming!</div>
+            </div>
+        </ContentBox>
+    </a>
+    <a href="https://github.com/FishyNavi/calc" class="yap">
+        <ContentBox>
+            <div class="project">
+                <h2>Calculator in C</h2>
+                <div>Slighly above than basic calculator written in C</div>
+            </div>
+        </ContentBox>
+    </a>
+
+    Stuff will appear soon™
+    
+
+</BasedLayout>
+
+<script>
+    import '../scripts/oneko.ts'
+</script>
+  

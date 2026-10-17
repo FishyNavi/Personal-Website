@@ -15,8 +15,9 @@
 
     const canvas = document.getElementById('background-canvas') as HTMLCanvasElement;
     const context = canvas.getContext('2d') as CanvasRenderingContext2D;
-    const G = 6.6743;
-
+    context.imageSmoothingEnabled = false;
+    const G = 0.000066743;
+    
     let offsetX:number;
     let offsetY:number;
 
@@ -33,15 +34,15 @@
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
         offsetX = window.innerWidth/2;
-        offsetY = window.innerHeight/2;
+        offsetY = window.innerHeight/3;
     }
     window.addEventListener('resize',onResize);
     let bodies: Body[] = [];
     function resetEnviroment() {
         bodies = [
-            {x: -90, y:0, vx:0, vy:0,mass:5,color:"#FF0000",trail:[] },
-            {x: 90, y:0, vx:0, vy:0,mass:5,color:"#00FF00",trail:[] },
-            {x: 0, y:-90, vx:0, vy:0,mass:5,color:"#0000FF",trail:[] }
+            {x: -90, y:0, vx:0, vy:0,mass:2000,color:"#FF0000",trail:[] },
+            {x: 90, y:0, vx:0, vy:0,mass:2000,color:"#00FF00",trail:[] },
+            {x: 0, y:-90, vx:0, vy:0,mass:2000,color:"#0000FF",trail:[] }
         ]
         bodies.forEach((b) => {
             b.x+=offsetX;
@@ -56,7 +57,7 @@
                 if (i === j) continue;
                 const dx = bodies[j].x - bodies[i].x;
                 const dy = bodies[j].y - bodies[i].y;
-                const sSqr = dx*dx+dy*dy+420;
+                const sSqr = dx*dx+dy*dy+400;
                 const s = Math.sqrt(sSqr);
 
                 const f = G*bodies[i].mass*bodies[j].mass/sSqr;
@@ -81,8 +82,7 @@
     }
     
     function draw() {
-        context.fillStyle = 'rgba(0, 0, 0, 0.2)';
-        context.fillRect(0, 0, canvas.width, canvas.height);
+        context.drawImage(stars,0, 0, canvas.width, canvas.height);
         for (let b of bodies) {
             if (b.trail.length < 2) continue;
             context.beginPath();
@@ -113,10 +113,15 @@
         requestAnimationFrame(loop);
         
     }
+    const stars = new window.Image();
+    stars.src = '/stars.png';
 
-    onResize();
-    resetEnviroment();
-    loop();
+    stars.onload = () => {
+        onResize();
+        resetEnviroment();
+        loop();
+    };
+    
     
     
 

@@ -1,0 +1,51 @@
+---
+import BasedLayout from '../layouts/basedLayout.astro'
+import ContentBox from "../components/contentBox.astro";
+import Background from '../components/StaticBackground.astro';
+const pageTitle = "About me";
+---
+<Background></Background>
+<BasedLayout pageTitle = {pageTitle}>
+    <ContentBox>
+        <div>
+            <h3 class="yap">Some interesting stuff</h3>
+            <div>
+                <center>
+                    <ul>
+                        <li>A proud ukrainian 🇺🇦</li>
+                        <li>Using NixOS BTW</li>
+                        <li>Likes listening to metal</li>
+                        <li>Some sort of declinist</li>
+                    </ul>
+                </center> 
+            </div>
+        </div>
+    </ContentBox>
+    <ContentBox>
+        <div style="flex: 1;">
+            <h3 class="yap">Personal goals</h3>
+            <ul>
+                <li>be a good person</li>
+                <li>search for goals in life</li>
+                <p>
+                    Maybe it's bad that i don't have it specified well, but that's the only goal that im guided by.
+                </p>
+                
+            </ul>
+            
+        </div>
+        <div class="yap">
+            <h3>Some more about me</h3>
+            <p>I know python, some C, CSS, TS and nix</p>
+            <p>I like clicking circles. osu! best game ever</p>
+            <p>I also like shooting people >:3 (on camera)</p>
+            <p>Me sometimes draw silly fluffy creatures :3c</p>
+            
+        </div>
+    </ContentBox>
+</BasedLayout>
+
+
+<script>
+    import '../scripts/oneko.ts'
+</script>

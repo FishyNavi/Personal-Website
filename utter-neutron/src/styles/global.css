@@ -80,7 +80,7 @@ a:hover {
 }
 
 .side-box {
-    width: 100px;
+    width: 150px;
     border-left: 3px solid #8d8296;
     display: flex;
     flex-direction: column;
@@ -103,6 +103,15 @@ var {
     color: #b0b0ff;
     padding: 1px;
 }
+ul {
+    list-style-position: inside;
+}
+figcaption {
+    padding: 0px 20px;
+    width: fit-content;
+    border: 1px solid #8d8296;
+}
+
 @keyframes eepy {
     0% {
         background-image: url('/oneko1.png');
