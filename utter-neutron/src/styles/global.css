@@ -72,6 +72,7 @@ a:hover {
 .page {
     background-color: rgba(14, 9, 18, 0.85);
     height: 100%;
+    padding-top: 1rem;
 }
 
 .yap {
