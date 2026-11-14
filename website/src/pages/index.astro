@@ -1,29 +1,39 @@
 ---
-import BasedLayout from '../layouts/basedLayout.astro'
+import BasedLayout from "../layouts/basedLayout.astro";
 import ContentBox from "../components/contentBox.astro";
-import Background from '../components/background.astro';
+import Background from "../components/background.astro";
 const pageTitle = "Cynamon's home";
 ---
-<Background></Background>
+
+<Background />
 <BasedLayout pageTitle={pageTitle}>
     <ContentBox>
         <div class="yap">
             <h2>Welcome!</h2>
-            <p>Hello. I'm cynamon and this is my website :3c I have a chaotic nature, lots of passions and sometimes I make things. New stuff will appear or not here from time to time. Right now im <a href="https://www.imood.com/users/cynamon_"><img src="https://moods.imood.com/display/uname-cynamon_/fg-bd96de/trans-1/imood.gif" alt="The current mood of cynamon_ at www.imood.com"></a></p>
-           
+            <p>
+                Hello. I'm cynamon and this is my website :3c I have a chaotic
+                nature, lots of passions and sometimes I make things. New stuff
+                will appear or not here from time to time. Right now im{" "}
+                <a href="https://www.imood.com/users/cynamon_">
+                    <img
+                        src="https://moods.imood.com/display/uname-cynamon_/fg-bd96de/trans-1/imood.gif"
+                        alt="The current mood of cynamon_ at www.imood.com"
+                    />
+                </a>
+            </p>
         </div>
         <div class="side-box">
-            <img src="/zadenfop.png" alt="zaden"/>
-            <div class="side-box-label">My fop Zaden :3</div>
+            <img src="/zadenfop.png" alt="zaden" />
+            <div class="side-box-label">My fop Zaden</div>
         </div>
     </ContentBox>
 
     <ContentBox>
-        <div class="yap">
+        <div class="yap small">
             <h3>Why cynamondev?</h3>
             <p>I like the flavor of cinnamon.</p>
         </div>
-        <div class="side-history">
+        <div class="side-history large">
             <ul>
                 <h3>Update history</h3>
                 <li>17.10.2026 - Finished it! Kinda.</li>
@@ -31,21 +41,23 @@ const pageTitle = "Cynamon's home";
                 <li>16.10.2026 - Colorful balls</li>
                 <li>15.10.2026 - Things being changed</li>
                 <li>14.10.2026 - The idea was born</li>
-                pls dont forget to add 
+                pls dont forget to add
             </ul>
         </div>
     </ContentBox>
 
     <ContentBox>
-        <div class="yap">
+        <div class="yap large">
             <h3>Some more to read...</h3>
-            <p style="text-indent: 1em;">
-                It is just the landing page! Go check out other parts of the website if you'd like. I might add blogs and uhhh... uh... stuff :3 Time will tell. 
+            <p>
+                It is just the landing page! Go check out other parts of the
+                website if you'd like. I might add blogs and uhhh... uh... stuff
+                :3 Time will tell.
             </p>
         </div>
     </ContentBox>
 </BasedLayout>
 
 <script>
-    import '../scripts/oneko.ts'
+    import "../scripts/oneko.ts";
 </script>

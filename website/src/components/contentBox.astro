@@ -1,25 +1,24 @@
 <div class="contentWrapper">
     <div class="oneko-run"></div>
     <div class="content">
-        <slot></slot>
+        <slot />
     </div>
-        
 </div>
 <style>
     @keyframes oneko-run {
         0% {
             background-position: 0px 96px;
-        }    
+        }
         100% {
             background-position: 0px 1056px;
         }
     }
-    @keyframes oneko-run-but-backwards {
+    @keyframes oneko-run2 {
         0% {
             background-position: 0px 96px;
-        }    
+        }
         100% {
-            background-position: 0px 1056px;  
+            background-position: 0px 1056px;
         }
     }
     .contentWrapper {
@@ -29,9 +28,11 @@
         container-type: inline-size;
     }
     .content {
-        display:flex;
+        align-items: stretch;
         padding: 10px;
-        
+        display: flex;
+        gap: 10;
+        width: 100%;
     }
     .oneko-run {
         position: absolute;
@@ -39,14 +40,16 @@
         left: -5%;
         width: 48px;
         height: 48px;
-        background-image: url('/oneko-run.png');
+        background-image: url("/oneko-run.png");
         background-size: 48px 1008px;
         background-position: 0 0;
         opacity: 0;
         translate: 0px -24px;
     }
     .oneko-run.hovered {
-        transition: translate 2s linear, opacity ease 0.2s;;
+        transition:
+            translate 2s linear,
+            opacity ease 0.2s;
         opacity: 1;
         animation: oneko-run 2s steps(20) forwards;
         translate: 52cqw -24px;
@@ -54,7 +57,7 @@
     .oneko-run.unhovered {
         opacity: 1;
         transition: translate 2s linear;
-        animation: oneko-run-but-backwards 2s steps(20) forwards;
+        animation: oneko-run2 2s steps(20) forwards;
         translate: 100cqw -24px;
     }
 </style>

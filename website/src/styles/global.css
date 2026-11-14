@@ -1,5 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap');
+
+
 * {
-    color: #bd96de;
     box-sizing: border-box;
 }
 
@@ -8,33 +10,66 @@ body {
     width: 100%;
     max-width: 80ch;
     line-height: 1.5;
+    color: #bd96de;
     background-color: #060407;
-    font-family: sans-serif;
+    font-family: 'Quicksand', sans-serif;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
 }
-
+img {
+    max-width: 100%;
+    height: auto;
+}
 a {
     color: #8585ff;
-    transition: color 0.2s ease;
+
     text-decoration: none;
+}
+a > * {
+    color:  #bd96de;
 }
 
 a:hover {
     color: #bd96de;
 }
+@media (max-width: 768px) {
+    .navi {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 0;
+        gap: 0.5rem;
 
+    }
+}
+ul, ol {
+    list-style-position: inside;
+    margin: 0;
+    padding-left: 0;
+}
+
+li {
+    margin-bottom: 0.5rem;
+}
 .navi {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0.35rem 0 0.35rem 0.35rem;
+    margin-top: clamp(4rem, 15vh, 10rem);
+    padding-left: 1rem;
     background-color: #291e32;
-    margin-top: 10rem;
+}
+
+.buttons {
+    display: flex;
+    align-items: center;
 }
 
 .nav {
     position: relative;
-    padding: 0.5rem 1rem;
+    padding: 0.35rem;
     background-color: #24192d;
+    transition: background-color 0.2s ease;
 }
 
 .nav:hover {
@@ -53,6 +88,7 @@ a:hover {
     background-position: center;
     opacity: 0;
     transition: transform 0.1s ease 0.2s, opacity 0.1s ease 0.2s;
+    pointer-events: none;
 }
 
 .nav:hover .oneko-nav {
@@ -62,17 +98,23 @@ a:hover {
 }
 
 .content > * {
+    min-width: 0;
     border: 3px solid #8d8296;
-    border-radius: 15px;
-    margin: 10px;
+    border-radius: 7px;
+    margin: 0;
     padding: 5px;
     width: 100%;
+    overflow-wrap: anywhere;
+
 }
 
 .page {
     background-color: rgba(14, 9, 18, 0.85);
-    height: 100%;
     padding-top: 1rem;
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
 }
 
 .yap {
@@ -81,7 +123,7 @@ a:hover {
 }
 
 .side-box {
-    width: 150px;
+    flex: 0.3;
     border-left: 3px solid #8d8296;
     display: flex;
     flex-direction: column;
@@ -93,20 +135,39 @@ a:hover {
 
 .side-history {
     border-left: 3px solid #8d8296;
-    height: 150px; 
-    width: 400px;
+    height: 250px;
     overflow-y: auto;
 
 }
+.small,
+.large {
+    min-width: 0;
+    margin: 0;
+}
+
+.small {
+    flex: 1;
+}
+
+.large {
+    flex: 2;
+}
+@container (max-width: 36rem) {
+    .content {
+        flex-direction: column;
+    }
+    .content > * {
+        flex: none;
+    }
+}
+
 var {
     background-color: #291e32;
     border-radius: 5px;
     color: #b0b0ff;
     padding: 1px;
 }
-ul {
-    list-style-position: inside;
-}
+
 figcaption {
     padding: 0px 20px;
     width: fit-content;
