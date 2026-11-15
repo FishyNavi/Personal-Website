@@ -4,9 +4,21 @@ import { messages } from "../db/schema";
 ---
 
 <div class="message-form">
-    <input type="text" id="name-input" maxlength="50" />
-    <input type="text" id="message-input" maxlength="500" />
-    <button id="send-button">Buton</button>
+    <div>
+        <strong>Username: </strong>
+        <input
+            type="text"
+            id="name-input"
+            maxlength="50"
+            placeholder="Nyan.."
+        />
+    </div>
+    <strong>Message:</strong>
+    <div>
+        <textarea id="message-input" maxlength="500" />
+    </div>
+
+    <button id="send-button">Send</button>
 </div>
 
 <script>
@@ -43,56 +55,24 @@ import { messages } from "../db/schema";
         }
     });
 </script>
+<style></style>
 <style>
-    .message-form {
-        display: flex;
-        gap: 10px;
-        align-items: center;
-        max-width: 600px;
-        margin: 0 auto;
-        font-family:
-            system-ui,
-            -apple-system,
-            sans-serif;
-    }
-
-    .message-form input[type="text"] {
-        padding: 10px 12px;
-        border: 1px solid #ccc;
-        border-radius: 6px;
-        font-size: 14px;
-        outline: none;
-        transition: border-color 0.2s;
-    }
-
-    .message-form input[type="text"]:focus {
-        border-color: #0066ff;
-    }
-
-    /* Give the message input more space than the name input */
-    #name-input {
-        flex: 1;
-        min-width: 120px;
-    }
-
     #message-input {
-        flex: 2;
-        min-width: 200px;
+        width: 70%;
+        height: 120px;
+        font-family: inherit;
+        resize: none;
+        padding: 5px;
     }
-
-    #send-button {
-        padding: 10px 20px;
-        background-color: #0066ff;
-        color: white;
-        border: none;
-        border-radius: 6px;
-        font-size: 14px;
-        font-weight: 500;
-        cursor: pointer;
-        transition: background-color 0.2s;
+    input:focus,
+    textarea:focus {
+        outline: none;
+        border-color: #bd96de;
     }
-
-    #send-button:hover {
-        background-color: #0052cc;
+    input,
+    textarea {
+        background-color: #24192d;
+        color: #bd96de;
+        border-radius: 5px;
     }
 </style>
