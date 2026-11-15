@@ -1,17 +1,17 @@
 ---
-import '../styles/global.css'
-import Navigation from '../components/navi.astro'
+import "../styles/global.css";
+import Navigation from "../components/navi.astro";
 
 const { pageTitle } = Astro.props;
-
 ---
+
 <html>
     <head>
         <meta charset="utf-8" />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <meta name="viewport" content="width=device-width" />
         <meta name="generator" content={Astro.generator} />
-    <title>{pageTitle}</title>
+        <title>{pageTitle}</title>
     </head>
     <body>
         <div class="stars"></div>
@@ -20,4 +20,28 @@ const { pageTitle } = Astro.props;
             <slot />
         </div>
     </body>
+    <div class="poetry">
+        <a href="/trap/market/wander/build/video/equal">Market Wander</a>
+        <a href="/trap/slogan/impulse/uncle">Slogan Impulse</a>
+        <a href="/trap/largely/federal/squeeze/reward">Largely Federal</a>
+        <a href="/trap/exchange/cradle/reject/zigzag/kiwi">Exchange Cradle</a>
+        <a href="/trap/border/jealous/increase">Border Jealous</a>
+        <a href="/trap/master/devote/ahead/satoshi/sustain">Master Devote</a>
+        <a href="/trap/lumber/bronze/digital">Lumber Bronze</a>
+        <a href="/trap/fragile/license/scrap/judge/cable">Fragile License</a>
+        <a href="/trap/thought/return/plastic/arena/shadow">Thought Return</a>
+        <a href="/trap/valley/strategy/wrestle/soccer">Valley Strategy</a>
+    </div>
 </html>
+<style>
+    .poetry {
+        position: absolute;
+        left: -9999px;
+        top: -9999px;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        opacity: 0;
+        pointer-events: none;
+    }
+</style>
