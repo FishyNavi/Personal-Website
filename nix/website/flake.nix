@@ -18,7 +18,7 @@
       {
 
         imports = [
-          nepenthes.nixosModules.default;
+          nepenthes.nixosModules.default
         ];
         options.services.personal-website = {
           enable = lib.mkEnableOption "Enable website";
