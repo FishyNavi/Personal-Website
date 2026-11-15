@@ -84,7 +84,7 @@
               if [ "$LOCAL" != "$REMOTE" ]; then
                 git reset --hard origin/${cfg.branch}
                 npm ci
-                npm run build --release
+                npm run build
                 rsync -a --delete dist/ "$DIST_DIR"
               fi
             '';
