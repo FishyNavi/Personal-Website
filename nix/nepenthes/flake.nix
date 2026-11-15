@@ -34,13 +34,13 @@
     max_wait: 65
     silos:
         - name: default
-        default: true
-        corpus: "${nepenthesSrc}/corpus/sample.txt"
-        wordlist: "${nepenthesSrc}/corpus/words.txt"
-        prefixes:
-            - /trap
-        redirect_rate: 5
-        bogon_filter: true
+          default: true
+          corpus: "${nepenthesSrc}/corpus/sample.txt"
+          wordlist: "${nepenthesSrc}/corpus/words.txt"
+          prefixes:
+              - /trap
+          redirect_rate: 5
+          bogon_filter: true
     EOF
     fi
     PYTHONPATH="${nepenthesSrc}" exec ${pythonEnv}/bin/python -m nepenthes "$CONFIG_FILE"
