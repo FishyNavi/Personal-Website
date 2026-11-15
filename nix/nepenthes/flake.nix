@@ -62,7 +62,7 @@
           path = lib.mkOption {
             type = lib.types.str;
             default = "/trap/";
-            decription = "Tarpit url path";
+            description = "Tarpit url path";
           };
           port = lib.mkOption {
             type = lib.types.port;
@@ -74,7 +74,7 @@
           users.users.nepenthes = {
             isSystemUser = true;
             group = "nepenthes";
-            home = "var/lib/nepenthes";
+            home = "/var/lib/nepenthes/";
             createHome = true;
           };
           users.groups.nepenthes = {};
@@ -84,17 +84,17 @@
             wantedBy = [ "multi-user.target" ];
             serviceConfig = {
               User = "nepenthes";
-              Group = "nepentes";
+              Group = "nepenthes";
               WorkingDirectory = "/var/lib/nepenthes";
-              ExecStart = "${nepenthesPkg}/bin/nepentes /var/lib/nepenthes/config.yml";
+              ExecStart = "${nepenthesPkg}/bin/nepenthes /var/lib/nepenthes/config.yml";
               Restart = "always";
             };
           };
           services.nginx.virtualHosts.${cfg.domain}.locations.${cfg.path} = {
-            proxyPass = "htt[://127.0.0.1:${toString cfg.port}]";
+            proxyPass = "http://127.0.0.1:${toString cfg.port}";
             extraConfig = ''
-              proxy_set_header X-Prefix '${cfg.path};
-              proxy_set_header X-Forwarder-For $remote_addr;
+              proxy_set_header X-Prefix '${cfg.path}';
+              proxy_set_header X-Forwarded-For $remote_addr;
               proxy_buffering off;
             '';
           };
