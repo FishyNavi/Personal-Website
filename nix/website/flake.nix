@@ -65,11 +65,12 @@
             script = ''
               set -e
               REPO_DIR="/var/www/astro/repo"
+              APP_DIR="$REPO_DIR/website"
               DIST_DIR="/var/www/dist"
 
               if [ ! -d "$REPO_DIR/.git" ]; then
                 git clone --branch ${cfg.branch} ${cfg.repoUrl} "$REPO_DIR"
-                cd "$REPO_DIR"
+                cd "$APP_DIR"
                 npm ci
                 npm run build
                 rsync -a --delete dist/ "$DIST_DIR"
@@ -83,6 +84,7 @@
               REMOTE=$(git rev-parse origin/${cfg.branch})
               if [ "$LOCAL" != "$REMOTE" ]; then
                 git reset --hard origin/${cfg.branch}
+                cd $APP_DIR
                 npm ci
                 npm run build
                 rsync -a --delete dist/ "$DIST_DIR"
