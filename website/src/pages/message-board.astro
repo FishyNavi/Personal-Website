@@ -19,13 +19,17 @@ const allMessages = await db.select().from(messages);
         message here and maybe... someone will see it.
     </div>
     <div>Be nice, cultural and friendly! I doubt it will be active though.</div>
+    <div>
+        There's a 10s cooldown after each message and you'll get timed out if
+        you spam it too much
+    </div>
     <ContentBox>
         <MessageForm />
     </ContentBox>
 
     <ContentBox>
         <div id="messages-list">
-            {allMessages.map((m) => (
+            {allMessages.toReversed().map((m) => (
                 <Message name={m.name} message={m.message} date={m.date} />
             ))}
         </div>
@@ -60,7 +64,7 @@ const allMessages = await db.select().from(messages);
             mdate.textContent = fdate;
         }
         if (m) {
-            div?.appendChild(m);
+            div?.prepend(m);
         }
     }
     window.addEventListener("add_message", (e: Event) => {

@@ -1,13 +1,15 @@
 ---
-import BasedLayout from '../layouts/basedLayout.astro'
+import BasedLayout from "../layouts/basedLayout.astro";
 import ContentBox from "../components/contentBox.astro";
-import Background from '../components/StaticBackground.astro';
+import Background from "../components/StaticBackground.astro";
 const pageTitle = "My projects";
 ---
-<Background></Background>
+
+<Background />
 <BasedLayout pageTitle={pageTitle}>
     <p>
-        Here are some of the things i made. Nothing really notable. (things are clickable)
+        Here are some of the things i made. Nothing really notable. (things are
+        clickable)
     </p>
     <a href="nixos" class="yap">
         <ContentBox>
@@ -17,7 +19,7 @@ const pageTitle = "My projects";
             </div>
         </ContentBox>
     </a>
-    <a href="hackyboard" class="yap">
+    <a href="https://github.com/FishyNavi/keyboard" class="yap">
         <ContentBox>
             <div class="project">
                 <h2>Hackyboard</h2>
@@ -33,13 +35,9 @@ const pageTitle = "My projects";
             </div>
         </ContentBox>
     </a>
-
     Stuff will appear soon™
-    
-
 </BasedLayout>
 
 <script>
-    import '../scripts/oneko.ts'
+    import "../scripts/oneko.ts";
 </script>
-  
