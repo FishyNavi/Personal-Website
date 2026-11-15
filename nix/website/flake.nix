@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    nepenthes.url = "path:./nepenthes";
+    nepenthes.url = "path:../nepenthes";
   };
 
   outputs = {self, nixpkgs, nepenthes, ...}:
