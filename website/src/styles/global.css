@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap');
-
+:root {
+    --surface: #bd96de;
+    --surface-accent: #b0b0ff;
+    --bg: #24192d;
+    --bg-accent: #291e32;
+    --boring-gray: #8d8296;
+}
 
 * {
     box-sizing: border-box;
@@ -10,7 +16,7 @@ body {
     width: 100%;
     max-width: 80ch;
     line-height: 1.5;
-    color: #bd96de;
+    color: var(--surface);
     background-color: #060407;
     font-family: 'Quicksand', sans-serif;
 }
@@ -24,11 +30,11 @@ a {
     text-decoration: none;
 }
 a > * {
-    color:  #bd96de;
+    color:  var(--surface);
 }
 
 a:hover {
-    color: #bd96de;
+    color: var(--surface);
 }
 @media (max-width: 768px) {
     .navi {
@@ -65,12 +71,12 @@ li {
 .nav {
     position: relative;
     padding: 0.35rem;
-    background-color: #24192d;
+    background-color: var(--bg);
     transition: background-color 0.2s ease;
 }
 
 .nav:hover {
-    background-color: #291e32;
+    background-color: var(--bg-accent);
 }
 
 .oneko-nav {
@@ -96,7 +102,7 @@ li {
 
 .content > * {
     min-width: 0;
-    border: 3px solid #8d8296;
+    border: 3px solid var(--boring-gray);
     border-radius: 7px;
     margin: 0;
     padding: 5px;
@@ -120,17 +126,17 @@ li {
 
 .side-box {
     flex: 0.3;
-    border-left: 3px solid #8d8296;
+    border-left: 3px solid var(--boring-gray);
     display: flex;
     flex-direction: column;
 }
 
 .side-box-label {
-    border-top: 3px solid #8d8296;
+    border-top: 3px solid var(--boring-gray);
 }
 
 .side-history {
-    border-left: 3px solid #8d8296;
+    border-left: 3px solid var(--boring-gray);
     height: 150px;
     overflow-y: auto;
 
@@ -160,14 +166,14 @@ li {
 var {
     background-color: #291e32;
     border-radius: 5px;
-    color: #b0b0ff;
+    color: var(--surface-accent);
     padding: 1px;
 }
 
 figcaption {
     padding: 0px 20px;
     width: fit-content;
-    border: 1px solid #8d8296;
+    border: 1px solid var(--boring-gray);
 }
 
 @keyframes eepy {
