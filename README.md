@@ -2,7 +2,11 @@
 That's a very cool and amazing website ~~(partially because it's mine)~~ 
 [Check it out!](https://cynamondev.com/) 
 
-The website is built on [Astro](https://astro.build/) framework. Mobile support is not added yet but will be done in future.
+The website is built on [Astro](https://astro.build/) framework and uses node as a server. Mobile support somewhat added, but could be better.
+
+There is a small message board you should check and leave some message after yourself!
+
+There's also a flake that sets up nepenthes ai crawler tarpit, which feeds ai crawler with endless markov chain nonsense. Cool, right?
 
 ### Features checklist:
 - [x] The website
