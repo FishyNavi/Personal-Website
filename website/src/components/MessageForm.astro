@@ -4,8 +4,8 @@ import { messages } from "../db/schema";
 ---
 
 <div class="message-form">
+    <strong>Username: </strong>
     <div>
-        <strong>Username: </strong>
         <input
             type="text"
             id="name-input"
@@ -15,10 +15,15 @@ import { messages } from "../db/schema";
     </div>
     <strong>Message:</strong>
     <div>
-        <textarea id="message-input" maxlength="500" />
+        <textarea
+            id="message-input"
+            maxlength="500"
+            placeholder="Write poetry here... or not"
+        />
     </div>
-
-    <button id="send-button">Send</button>
+    <p>
+        <button id="send-button">Send</button>
+    </p>
 </div>
 
 <script>
@@ -67,12 +72,23 @@ import { messages } from "../db/schema";
     input:focus,
     textarea:focus {
         outline: none;
-        border-color: #bd96de;
     }
     input,
     textarea {
         background-color: #24192d;
         color: #bd96de;
+        border: none;
+    }
+    #send-button {
+        font: inherit;
+        color: #8585ff;
+        background-color: #24192d;
+        border-color: #8585ff;
         border-radius: 5px;
+    }
+    #send-button:hover {
+        background-color: #291e32;
+        color: #bd96de;
+        border-color: #bd96de;
     }
 </style>

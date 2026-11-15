@@ -6,11 +6,23 @@ import { messages } from "../db/schema";
 import ContentBox from "../components/contentBox.astro";
 import Message from "../components/Message.astro";
 import MessageForm from "../components/MessageForm.astro";
+import Background from "../components/background.astro";
+
 const allMessages = await db.select().from(messages);
 ---
 
+<Background />
 <BasedLayout>
-    <MessageForm />
+    <h2>Message Board</h2>
+    <div>
+        It's a small message board just like the title says. You can leave your
+        message here and maybe... someone will see it.
+    </div>
+    <div>Be nice, cultural and friendly! I doubt it will be active though.</div>
+    <ContentBox>
+        <MessageForm />
+    </ContentBox>
+
     <ContentBox>
         <div id="messages-list">
             {allMessages.map((m) => (
