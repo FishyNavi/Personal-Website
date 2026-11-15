@@ -53,7 +53,7 @@
           systemd.services.personal-website = {
             after = [ "network-online.target" ];
             wants = [ "network-online.target" ];
-            path = with pkgs; [ git nodejs rsync bash ];
+            path = with pkgs; [ git nodejs_22 rsync bash ];
 
             serviceConfig = {
               Type = "oneshot";

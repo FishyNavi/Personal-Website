@@ -29,7 +29,7 @@ import { messages } from "../db/schema";
         if (error?.code === "NOT_ACCEPTABLE") {
             alert(error?.message);
         } else if (error) return;
-        
+
         if (data) {
             window.dispatchEvent(
                 new CustomEvent("add_message", {
@@ -43,3 +43,56 @@ import { messages } from "../db/schema";
         }
     });
 </script>
+<style>
+    .message-form {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        max-width: 600px;
+        margin: 0 auto;
+        font-family:
+            system-ui,
+            -apple-system,
+            sans-serif;
+    }
+
+    .message-form input[type="text"] {
+        padding: 10px 12px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font-size: 14px;
+        outline: none;
+        transition: border-color 0.2s;
+    }
+
+    .message-form input[type="text"]:focus {
+        border-color: #0066ff;
+    }
+
+    /* Give the message input more space than the name input */
+    #name-input {
+        flex: 1;
+        min-width: 120px;
+    }
+
+    #message-input {
+        flex: 2;
+        min-width: 200px;
+    }
+
+    #send-button {
+        padding: 10px 20px;
+        background-color: #0066ff;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        font-size: 14px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: background-color 0.2s;
+    }
+
+    #send-button:hover {
+        background-color: #0052cc;
+    }
+</style>
