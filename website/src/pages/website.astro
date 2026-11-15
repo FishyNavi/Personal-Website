@@ -1,54 +1,111 @@
 ---
-import BasedLayout from '../layouts/basedLayout.astro'
+import BasedLayout from "../layouts/basedLayout.astro";
 import ContentBox from "../components/contentBox.astro";
-import {execSync} from 'node:child_process';
-import Background from '../components/StaticBackground.astro';
-const uptime = parseFloat(execSync('cat /proc/uptime | awk \'{print $1}\'').toString().trim()); 
-const hostname = execSync('hostname').toString();
-const days = Math.floor(uptime / 86400);
-const hours = Math.floor((uptime % 86400) / 3600);
-const minutes = Math.floor((uptime % 3600) / 60);
-const seconds = Math.floor(uptime % 60);
+import { execSync } from "node:child_process";
+import Background from "../components/StaticBackground.astro";
+const btime =
+    parseInt(
+        execSync("awk '/btime/ {print $2}' /proc/stat").toString().trim(),
+        10,
+    ) * 1000;
+const hostname = execSync("hostname").toString();
 const pageTitle = "About website";
-
 ---
-<Background></Background>
-<BasedLayout pageTitle = {pageTitle}>
+
+<Background />
+<BasedLayout pageTitle={pageTitle}>
     <ContentBox>
         <div>
             <h3 class="yap">Some facts!</h3>
-            <p>The website is built by me, with my paws, using <a href="https://astro.build/">Astro</a> framework and of course is <a href="https://github.com/FishyNavi/Personal-Website">open-source</a></p>
-            <p>It is hosted on <var>{hostname}</var> and is up for <var>{days} days, {hours} hours, {minutes} minutes and {seconds} seconds.</var></p>
+            <p>
+                The website is built by me, with my paws, using{" "}
+                <a href="https://astro.build/">Astro</a> framework and has{" "}
+                <a href="https://github.com/FishyNavi/Personal-Website">
+                    public code
+                </a>
+            </p>
+            <p>
+                It is hosted on <var>{hostname}</var> and is up for{" "}
+                <var id="uptime">Loading...</var>
+            </p>
         </div>
     </ContentBox>
     <ContentBox>
         <div>
             <h3 class="yap">The goals</h3>
             <ul>
-                <li><s>make a website</s></li>
+                <li>
+                    <s>make a website</s>
+                </li>
                 <li>make the website good</li>
                 <li>unusual screen size support</li>
                 <li>self-host it</li>
                 <li>start blog</li>
                 <li>add cool stuff</li>
                 <li>button!</li>
-                <li>make it popular</li>    
-                <p>
-                    Slowly, but surely it all will be done
-                </p>
-                
+                <li>make it popular</li>
+                <p>Slowly, but surely it all will be done</p>
             </ul>
-            
         </div>
         <div>
             <h3 class="yap">The style</h3>
-            <p>I'm trying to make it look minimalistic, a bit chaotic, light and short. That's because i don't know CSS nor I have slightest will to learn it.</p>
-            <p>The color pallete is bright purple foreground(the same as in my shell) and more bluish shade for accent. Keeping it small is another aspect of minimalism.</p>
+            <p>
+                I'm trying to make it look minimalistic, a bit chaotic, light
+                and short. That's because i don't know CSS nor I have slightest
+                will to learn it.
+            </p>
+            <p>
+                The color pallete is bright purple foreground(the same as in my
+                shell) and more bluish shade for accent. Keeping it small is
+                another aspect of minimalism.
+            </p>
+        </div>
+    </ContentBox>
+    <ContentBox>
+        <div class="yap">
+            <h3>Latest GitHub commit</h3>
+            <var id="commit-message">Loading...</var> on{" "}
+            <var id="commit-date">Loading...</var>
         </div>
     </ContentBox>
 </BasedLayout>
 
+<script define:vars={{ btime }}>
+    function updateUptime() {
+        const ctime = Date.now();
+        const cuptime = (ctime - btime) / 1000;
 
+        const days = Math.floor(cuptime / 86400);
+        const hours = Math.floor((cuptime % 86400) / 3600);
+        const minutes = Math.floor((cuptime % 3600) / 60);
+        document.getElementById("uptime").textContent =
+            `${days}d ${hours}h ${minutes}m`;
+    }
+    updateUptime();
+    setInterval(updateUptime, 1000);
+</script>
 <script>
-    import '../scripts/oneko.ts'
+    fetch(
+        "https://api.github.com/repos/FishyNavi/Personal-Website/commits?per_page=1",
+    )
+        .then((res) => res.json())
+        .then((res) => {
+            let message = document.getElementById("commit-message");
+            let dante = document.getElementById("commit-date");
+            if (message) {
+                message.innerHTML = res[0].commit.message;
+            }
+
+            const date = new Date(res[0].commit.author.date).toLocaleDateString(
+                undefined,
+                {
+                    year: "numeric",
+                    month: "short",
+                    day: "numeric",
+                },
+            );
+            if (dante) {
+                dante.innerHTML = date;
+            }
+        });
 </script>

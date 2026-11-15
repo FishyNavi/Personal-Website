@@ -13,9 +13,6 @@ body {
     color: #bd96de;
     background-color: #060407;
     font-family: 'Quicksand', sans-serif;
-    min-height: 100dvh;
-    display: flex;
-    flex-direction: column;
 }
 img {
     max-width: 100%;
@@ -110,11 +107,10 @@ li {
 
 .page {
     background-color: rgba(14, 9, 18, 0.85);
-    padding-top: 1rem;
+    padding: 1rem;
     gap: 10px;
     display: flex;
     flex-direction: column;
-    flex: 1;
 }
 
 .yap {
@@ -135,7 +131,7 @@ li {
 
 .side-history {
     border-left: 3px solid #8d8296;
-    height: 250px;
+    height: 150px;
     overflow-y: auto;
 
 }

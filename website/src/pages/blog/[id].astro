@@ -1,0 +1,19 @@
+---
+import { getEntry, render } from "astro:content";
+import BasedLayout from "../../layouts/basedLayout.astro";
+import Background from "../../components/StaticBackground.astro";
+
+const { id } = Astro.params;
+
+const post = id ? await getEntry("blog", id) : undefined;
+
+if (!post) {
+    return new Response("Not found", { status: 404 });
+}
+const { Content } = await render(post);
+---
+
+<Background />
+<BasedLayout pageTitle={post.data.title}>
+    <Content />
+</BasedLayout>
