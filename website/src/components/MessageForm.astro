@@ -1,0 +1,45 @@
+---
+import { db } from "../db";
+import { messages } from "../db/schema";
+---
+
+<div class="message-form">
+    <input type="text" id="name-input" maxlength="50" />
+    <input type="text" id="message-input" maxlength="500" />
+    <button id="send-button">Buton</button>
+</div>
+
+<script>
+    import { actions } from "astro:actions";
+    const button = document.querySelector("button");
+    const name_input = document.getElementById(
+        "name-input",
+    ) as HTMLInputElement;
+    const message_input = document.getElementById(
+        "message-input",
+    ) as HTMLInputElement;
+    button?.addEventListener("click", async () => {
+        const name = name_input?.value.trim() ?? "";
+        const message = message_input?.value.trim() ?? "";
+
+        const { data, error } = await actions.sendEntry({
+            name,
+            message,
+        });
+        if (error?.code === "NOT_ACCEPTABLE") {
+            alert(error?.message);
+        } else if (error) return;
+        
+        if (data) {
+            window.dispatchEvent(
+                new CustomEvent("add_message", {
+                    detail: {
+                        name: data.name,
+                        message: data.message,
+                        date: data.date,
+                    },
+                }),
+            );
+        }
+    });
+</script>

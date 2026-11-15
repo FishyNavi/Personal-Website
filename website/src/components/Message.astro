@@ -1,0 +1,17 @@
+---
+const { name, message, date } = Astro.props;
+let d = new Date(date);
+const fdate = `at ${d.getHours()}:${d.getMinutes()} on ${String(d.getMonth() + 1).padStart(2, "0")}.${String(d.getDate()).padStart(2, "0")}.${d.getFullYear()}`;
+---
+
+<div class="message">
+    <strong class="name">{name}</strong> said:
+    <p class="message-body">{message}</p>
+    <var class="date">Sent {fdate}</var>
+</div>
+<style>
+    .message {
+        background-color: #24192d;
+        padding: 0.5rem;
+    }
+</style>

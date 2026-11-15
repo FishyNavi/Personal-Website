@@ -1,0 +1,53 @@
+---
+import BasedLayout from "../layouts/basedLayout.astro";
+
+import { db } from "../db";
+import { messages } from "../db/schema";
+import ContentBox from "../components/contentBox.astro";
+import Message from "../components/Message.astro";
+import MessageForm from "../components/MessageForm.astro";
+const allMessages = await db.select().from(messages);
+---
+
+<BasedLayout>
+    <MessageForm />
+    <ContentBox>
+        <div id="messages-list">
+            {allMessages.map((m) => (
+                <Message name={m.name} message={m.message} date={m.date} />
+            ))}
+        </div>
+    </ContentBox>
+</BasedLayout>
+<template>
+    <Message />
+</template>
+<style>
+    #messages-list {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+</style>
+<script>
+    const div = document.getElementById("messages-list");
+    const template = document.querySelector("template") as HTMLTemplateElement;
+    function addMessage(name: string, message: string, date: string) {
+        const _m = template.content.cloneNode(true) as DocumentFragment;
+        const m = _m.querySelector(".message");
+
+        const mname = m?.querySelector(".name");
+        const mbody = m?.querySelector(".message-body");
+        const mdate = m?.querySelector(".date");
+        if (mname) mname.textContent = name;
+        if (mbody) mbody.textContent = message;
+        if (mdate) mdate.textContent = date;
+        if (m) {
+            div?.appendChild(m);
+        }
+    }
+    window.addEventListener("add_message", (e: Event) => {
+        const { name, message, date } = (e as CustomEvent).detail;
+        addMessage(name, message, date);
+    });
+</script>
