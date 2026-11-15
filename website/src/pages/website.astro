@@ -4,10 +4,7 @@ import ContentBox from "../components/contentBox.astro";
 import { execSync } from "node:child_process";
 import Background from "../components/StaticBackground.astro";
 const btime =
-    parseInt(
-        execSync("awk '/btime/ {print $2}' /proc/stat").toString().trim(),
-        10,
-    ) * 1000;
+    parseInt(execSync("stat -c %Y /proc/1").toString().trim(), 10) * 1000;
 const hostname = execSync("hostname").toString();
 const pageTitle = "About website";
 ---
