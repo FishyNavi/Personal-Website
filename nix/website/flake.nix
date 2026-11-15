@@ -81,11 +81,11 @@
               git fetch origin ${cfg.branch}
 
               LOCAL=$(git rev-parse HEAD)
-              REMOTE=$(git rev-parse origin/${cfg.branch})
+              REMOTE=$(git rev-parse FETCH_HEAD)
               if [ "$LOCAL" != "$REMOTE" ]; then
                 git reset --hard origin/${cfg.branch}
                 cd $APP_DIR
-                npm ci
+                npm install
                 npm run build
                 rsync -a --delete dist/ "$DIST_DIR"
               fi
