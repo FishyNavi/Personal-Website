@@ -58,7 +58,7 @@
             description = "Astro SSR Node Server";
             after = [ "network.target" ];
             wantedBy = [ "multi-user.target" ];
-            path = with pkgs; [ gawk coreutils ];
+            path = with pkgs; [ gawk coreutils hostname ];
             serviceConfig = {
               User = "astro";
               Group = "astro";
