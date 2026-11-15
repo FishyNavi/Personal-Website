@@ -73,7 +73,6 @@
             };
           };
 
-          # 2. Git Fetch & Rebuild Service
           systemd.services.personal-website = {
             after = [ "network-online.target" ];
             wants = [ "network-online.target" ];
@@ -94,7 +93,7 @@
               if [ ! -d "$REPO_DIR/.git" ]; then
                 git clone --branch ${cfg.branch} ${cfg.repoUrl} "$REPO_DIR"
                 cd "$APP_DIR"
-                npm install
+                npm ci
                 npm run build
                 sudo /run/current-system/sw/bin/systemctl restart personal-website-server.service
                 exit 0
@@ -108,24 +107,23 @@
               if [ "$LOCAL" != "$REMOTE" ]; then
                 git reset --hard FETCH_HEAD
                 cd "$APP_DIR"
-                npm install
+                npm ci
                 npm run build
                 sudo /run/current-system/sw/bin/systemctl restart personal-website-server.service
               fi
             '';
           };
 
-          # 3. Timer to check for Git updates every 5 minutes
           systemd.timers.personal-website = {
             wantedBy = [ "timers.target" ];
             timerConfig = {
-              OnBootSec = "5m";
+              OnBootSec = "30s";
               OnUnitActiveSec = "5m";
               Unit = "personal-website.service";
             };
+            unitConfig.ConditionPathExists = "/var/www/astro/repo/website/dist/server/entry.mjs";
           };
 
-          # 4. Nginx Reverse Proxy to Astro Node Server
           services.nginx.virtualHosts.${cfg.domain} = {
             listen = [{ addr = "0.0.0.0"; port = 80; }];
             globalRedirect = null;
