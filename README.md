@@ -7,10 +7,11 @@ The website is built on [Astro](https://astro.build/) framework. Mobile support 
 ### Features checklist:
 - [x] The website
 - [x] Blogs
-- [ ] Mobile support
+- [x] Mobile support(Kinda)
 - [ ] Music player?
-- [ ] Automated \<img> tag replacement
-- [ ] Statistics
+- [ ] Dark/Light mode switch
+- [x] Automated \<img> tag replacement
+- [x] Statistics
 
 ## Build
 ### Depencdencies: 
@@ -19,9 +20,36 @@ The website is built on [Astro](https://astro.build/) framework. Mobile support 
 git clone https://github.com/FishyNavi/Personal-Website.git
 cd Personal-Website/website
 
-nix develop # if using nix
+nix develop # if using nix. 
 
 npm install
 npm run build
 
 ```
+### Deployment:
+include:
+```nix
+imports = [
+  # ...
+  (builtins.getFlake "github:FishyNavi/Personal-Website/main?dir=nix/website").nixosModules.default
+];
+  
+nix.settings = {
+  experimental-features = [ "nix-command" "flakes" ];
+  auto-optimise-store = true;
+};
+
+security.acme = {
+  acceptTerms = true;
+  defaults.email = "mail";
+};
+services.nginx.enable = true;
+
+services.personal-website = {
+  enable = true;
+  domain = "cynamondev.com";
+  repoUrl = "https://github.com/FishyNavi/Personal-Website.git"; 
+  branch = "main";
+};
+```
+into `configuration.nix` on host machine
