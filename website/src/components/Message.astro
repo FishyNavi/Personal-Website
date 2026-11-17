@@ -1,7 +1,7 @@
 ---
 const { name, message, date } = Astro.props;
 let d = new Date(date);
-const fdate = `at ${d.getHours()}:${d.getMinutes()} on ${String(d.getMonth() + 1).padStart(2, "0")}.${String(d.getDate()).padStart(2, "0")}.${d.getFullYear()}`;
+const fdate = `at ${String(d.getHours()).padStart(2, "0")}:${String(d.getMinutes()).padStart(2, "0")} on ${String(d.getMonth() + 1).padStart(2, "0")}.${String(d.getDate()).padStart(2, "0")}.${d.getFullYear()}`;
 ---
 
 <div class="message">
